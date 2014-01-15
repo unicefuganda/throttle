@@ -1,9 +1,8 @@
 # throttle/tests.py
 
-from django.test import SimpleTestCase
+from throttle.models import KannelMessage
+from django.test import TestCase, SimpleTestCase
 from django.test.client import Client
-
-from .models import KannelMessage
 
 
 class KannelMessageTests(SimpleTestCase):
@@ -20,6 +19,23 @@ class KannelMessageTests(SimpleTestCase):
             str(kannel_message),
             'Message from 256712123456 on fake'
         )
+
+
+class KannelMessageListViewTests(TestCase):
+    """ KannelMessage list view tests. """
+
+    def test_messages_in_the_context(self):
+        client = Client()
+        response = client.get('/')
+
+        self.assertEquals(list(response.context['object_list']), [])
+        KannelMessage.objects.create(
+            backend='fake',
+            sender='256712123456',
+            message='fake message for listview'
+        )
+        response = client.get('/')
+        self.assertEquals(response.context['object_list'].count(), 1)
 
 
 class ReceiveTestCase(SimpleTestCase):

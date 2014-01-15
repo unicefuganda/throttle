@@ -1,0 +1,9 @@
+<h1>Throttled Messages</h1>
+
+<a href='{% url 'message-new' %}'>add message</a>
+
+<ul>
+  {% for message in object_list %}
+    <li class="message">{{ message }}</li>
+  {% endfor %}
+</ul>

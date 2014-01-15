@@ -1,0 +1,11 @@
+<h1>Add Throttled Message</h1>
+
+<form action="{% url "message-new" %}" method="POST">
+  {% csrf_token %}
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+  <input id="save_message" type="submit" value="Save" />
+</form>
+
+<a href="{% url "message-list" %}">back to list</a>
