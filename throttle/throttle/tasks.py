@@ -29,7 +29,7 @@ def send_to_router(unused):
     url = settings.ROUTER_URL
     password = settings.ROUTER_PASSWORD
     with transaction.commit_on_success():
-        m = KannelMessage.objects.select_for_update(nowait=True).earliest()
+        m = KannelMessage.objects.select_for_update().earliest()
         try:
             payload = {
                 'backend': m.backend,
