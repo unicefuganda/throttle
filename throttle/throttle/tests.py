@@ -6,6 +6,22 @@ from django.test.client import Client
 from .models import KannelMessage
 
 
+class KannelMessageTests(SimpleTestCase):
+    """ KannelMessage Model tests """
+
+    def test_str(self):
+        kannel_message = KannelMessage(
+            backend='fake',
+            sender='256712123456',
+            message='fake message'
+        )
+
+        self.assertEqual(
+            str(kannel_message),
+            'Message from 256712123456 on fake'
+        )
+
+
 class ReceiveTestCase(SimpleTestCase):
     payload = {
         'backend': 'yo',
