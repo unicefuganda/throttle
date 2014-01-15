@@ -131,6 +131,8 @@ INSTALLED_APPS = (
     'djcelery',
     'kombu.transport.django',
     'throttle',
+
+    'raven.contrib.django.raven_compat',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -168,7 +170,7 @@ CELERY_ENABLE_UTC = True
 ROUTER_URL = 'http://ureport.unicefuganda.org/router/receive/'
 ROUTER_PASSWORD = 'k1pr0t1ch'
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
-CELERYD_PREFETCH_MULTIPLIER=1
+CELERYD_PREFETCH_MULTIPLIER = 1
 #CELERY_ACKS_LATE=False
 CELERYBEAT_SCHEDULE = {
     'add-every-second': {
@@ -176,4 +178,9 @@ CELERYBEAT_SCHEDULE = {
         'schedule': timedelta(seconds=10),
         'args': None
     },
+}
+
+RAVEN_CONFIG = {
+    'dsn': 'http://3944cc0c8dd34ee8a725cb571d471b65:'
+           '6b402b189cae45a78383b00e35b0f33c@sentry.unicefuganda.org/8',
 }
