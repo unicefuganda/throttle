@@ -102,6 +102,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pagination_bootstrap.middleware.PaginationMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request"
 )
 
 ROOT_URLCONF = 'throttle.urls'
@@ -131,6 +140,7 @@ INSTALLED_APPS = (
     'djcelery',
     'kombu.transport.django',
     'throttle',
+    'pagination_bootstrap',
 
     'raven.contrib.django.raven_compat',
 )

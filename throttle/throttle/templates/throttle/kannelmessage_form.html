@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Add Throttled Message</h1>
 
 <form action="{% url "message-new" %}" method="POST">
@@ -9,3 +12,4 @@
 </form>
 
 <a href="{% url "message-list" %}">back to list</a>
+{% endblock content %}

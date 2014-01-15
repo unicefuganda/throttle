@@ -1,9 +1,34 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% autopaginate object_list %}
+
+{% block content %}
 <h1>Throttled Messages</h1>
 
-<a href='{% url 'message-new' %}'>add message</a>
+<div class='pull-right'>
+    <a href='{% url 'message-new' %}' class='btn btn-default'>add message</a>
+    <p></p>
+</div>
 
-<ul>
-  {% for message in object_list %}
-    <li class="message">{{ message }}</li>
-  {% endfor %}
-</ul>
+<table class='table table-striped table-bordered table-hover'>
+    <tr>
+        <th>ID</th>
+        <th>Time</th>
+        <th>Sender</th>
+        <th>Message</th>
+        <th>Backend</th>
+    </tr>
+    {% for message in object_list %}
+    <tr>
+        <td><a href="{{ message.get_absolute_url }}">{{ message.id }}</a></td>
+        <td class='date'>{{ message.created }}</td>
+        <td class='phone_number'>{{ message.sender }}</td>
+        <td class='message'>{{ message.message }}</td>
+        <td class='backend'>{{ message.backend }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% paginate %}
+
+{% endblock content %}

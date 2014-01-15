@@ -3,7 +3,7 @@ from .models import KannelMessage
 from .tasks import store_in_db
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseNotFound
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 
 
 def router_receive(request):
@@ -28,6 +28,7 @@ def receive(request):
 
 class KannelMessageListView(ListView):
     model = KannelMessage
+    paginate_by = 15
 
 
 class KannelMessageCreateView(CreateView):
@@ -35,3 +36,7 @@ class KannelMessageCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('message-list')
+
+
+class KannelMessageDetailView(DetailView):
+    model = KannelMessage

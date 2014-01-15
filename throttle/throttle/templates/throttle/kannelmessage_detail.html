@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Message Detail</h1>
+
+<p>Sender: {{ object.sender }}</p>
+<p>Backend: {{ object.backend }}</p>
+<p>Message: {{ object.message }}</p>
+
+<a href="{% url 'message-list' %}">back to list</a>
+
+{% endblock %}

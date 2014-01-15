@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from model_utils.models import TimeStampedModel
 
@@ -12,6 +13,9 @@ class KannelMessage(TimeStampedModel):
             self.sender,
             self.backend
         )
+
+    def get_absolute_url(self):
+        return reverse('message-view', kwargs={'pk': self.id})
 
     class Meta:
         get_latest_by = 'created'

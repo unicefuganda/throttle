@@ -27,7 +27,7 @@ class KannelMessageListIntegrationTests(LiveServerTestCase):
         self.selenium.get('%s%s' % (self.live_server_url, '/'))
         self.assertEqual(
             self.selenium.find_elements_by_css_selector('.message')[0].text,
-            'Message from 256712123456 on fake'
+            'fake message for listview integration'
         )
 
     def test_add_message_linked(self):
@@ -49,5 +49,5 @@ class KannelMessageListIntegrationTests(LiveServerTestCase):
         self.selenium.find_element_by_id('save_message').click()
         self.assertEqual(
             self.selenium.find_elements_by_css_selector('.message')[-1].text,
-            'Message from 2567121324354 on fake'
+            'message two'
         )

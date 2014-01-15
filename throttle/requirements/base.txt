@@ -15,3 +15,6 @@ six>=1.4.1
 sqlparse>=0.1.10
 wsgiref>=0.1.2
 raven>=4.0.3
+django-crispy-forms>=1.4.0
+unipath>=1.0
+django-pagination-bootstrap>=1.0.5
