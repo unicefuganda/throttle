@@ -8,3 +8,5 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
     }
 }
+
+CELERY_ALWAYS_EAGER = True

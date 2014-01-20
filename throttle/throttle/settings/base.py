@@ -182,13 +182,6 @@ ROUTER_PASSWORD = 'k1pr0t1ch'
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 CELERYD_PREFETCH_MULTIPLIER = 1
 #CELERY_ACKS_LATE=False
-CELERYBEAT_SCHEDULE = {
-    'add-every-second': {
-        'task': 'throttle.tasks.send_to_router',
-        'schedule': timedelta(seconds=10),
-        'args': None
-    },
-}
 
 RAVEN_CONFIG = {
     'dsn': 'http://3944cc0c8dd34ee8a725cb571d471b65:'

@@ -23,10 +23,4 @@ INSTALLED_APPS += (
 )
 ROUTER_URL = 'http://localhost:45524/router/receive/'
 
-CELERYBEAT_SCHEDULE = {
-    'add-every-10-second': {
-        'task': 'throttle.tasks.send_to_router',
-        'schedule': timedelta(seconds=10),
-        'args': None
-    },
-}
+CELERY_ALWAYS_EAGER=True

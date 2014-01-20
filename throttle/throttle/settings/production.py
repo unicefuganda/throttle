@@ -16,10 +16,10 @@ ALLOWED_HOSTS = ['*']
 
 ROUTER_URL = 'http://ureport.unicefuganda.org/router/receive/'
 ROUTER_PASSWORD = 'k1pr0t1ch'
-CELERYBEAT_SCHEDULE = {
-    'add-every-second': {
-        'task': 'throttle.tasks.send_to_router',
-        'schedule': timedelta(seconds=10),
-        'args': None
-    },
-}
+#CELERYBEAT_SCHEDULE = {
+#    'add-every-second': {
+#        'task': 'throttle.tasks.send_to_router',
+#        'schedule': timedelta(seconds=10),
+#        'args': None
+#    },
+#}
