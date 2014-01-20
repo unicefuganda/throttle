@@ -18,7 +18,8 @@ def store_in_db(backend, sender, message):
     message = KannelMessage.objects.create(
         backend=backend,
         sender=sender,
-        message=message
+        message=message,
+        handled=False
     )
     return message.id
 

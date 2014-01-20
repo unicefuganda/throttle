@@ -32,7 +32,8 @@ class KannelMessageListViewTests(TestCase):
         KannelMessage.objects.create(
             backend='fake',
             sender='256712123456',
-            message='fake message for listview'
+            message='fake message for listview',
+            handled=False
         )
         response = client.get('/')
         self.assertEquals(response.context['object_list'].count(), 1)

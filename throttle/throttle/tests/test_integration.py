@@ -48,6 +48,6 @@ class KannelMessageListIntegrationTests(LiveServerTestCase):
 
         self.selenium.find_element_by_id('save_message').click()
         self.assertEqual(
-            self.selenium.find_elements_by_css_selector('.message')[-1].text,
+            self.selenium.find_elements_by_css_selector('.message')[0].text,
             'message two'
         )
