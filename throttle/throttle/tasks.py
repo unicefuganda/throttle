@@ -1,12 +1,13 @@
 from __future__ import absolute_import
 
 import requests
-from .models import KannelMessage
 from celery import task
-from celery.utils.log import get_task_logger
 from django.conf import settings
-from django.core.exceptions import DoesNotExist
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction
+
+from .models import KannelMessage
+from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)
 url = settings.ROUTER_URL
@@ -36,7 +37,7 @@ def mark_handled(backend, sender, message):
             ).select_for_update().earliest()
             m.handled = 1
             m.save()
-        except DoesNotExist:
+        except ObjectDoesNotExist:
             pass
 
 
