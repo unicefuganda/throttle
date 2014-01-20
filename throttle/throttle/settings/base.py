@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'kombu.transport.django',
     'throttle',
     'pagination_bootstrap',
+    'django_filters',
 
     'raven.contrib.django.raven_compat',
     'south'

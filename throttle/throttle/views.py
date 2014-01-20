@@ -4,6 +4,7 @@ from .tasks import send_directly_to_router, store_in_db
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseNotFound
 from django.views.generic import CreateView, ListView, DetailView
+from django_filters.views import FilterView
 
 
 def router_receive(request):
@@ -41,3 +42,11 @@ class KannelMessageCreateView(CreateView):
 
 class KannelMessageDetailView(DetailView):
     model = KannelMessage
+
+
+class KannelMessageFilterView(FilterView):
+    model = KannelMessage
+
+    class Meta:
+        fields = ['sender', 'backend', 'created']
+        order_by = ['created']

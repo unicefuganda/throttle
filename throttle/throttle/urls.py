@@ -1,7 +1,8 @@
-from .views import (KannelMessageCreateView, KannelMessageDetailView,
-                    KannelMessageListView)
 from django.conf.urls import patterns, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from .views import (KannelMessageCreateView, KannelMessageDetailView,
+                    KannelMessageFilterView, KannelMessageListView)
 
 # Uncomment the next two lines to enable the admin:
 #from django.contrib import admin
@@ -20,7 +21,7 @@ urlpatterns = patterns(
         name='message-list'
     ),
     url(
-        r'new$',
+        r'new/$',
         KannelMessageCreateView.as_view(),
         name='message-new'
     ),
@@ -28,6 +29,11 @@ urlpatterns = patterns(
         r'(?P<pk>\d+)/$',
         KannelMessageDetailView.as_view(),
         name='message-view'
+    ),
+    url(
+        r'^search/$',
+        KannelMessageFilterView.as_view(),
+        name='message-search'
     )
 )
 

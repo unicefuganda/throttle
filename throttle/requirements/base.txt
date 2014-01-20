@@ -18,3 +18,4 @@ django-crispy-forms>=1.4.0
 unipath>=1.0
 django-pagination-bootstrap>=1.0.5
 South>=0.8.4
+django-filter>=0.7

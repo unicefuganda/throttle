@@ -1,5 +1,8 @@
+import django_filters
+
 from django.core.urlresolvers import reverse
 from django.db import models
+
 from model_utils.models import TimeStampedModel
 
 
@@ -21,3 +24,13 @@ class KannelMessage(TimeStampedModel):
     class Meta:
         get_latest_by = 'created'
         ordering = ['-created']
+
+
+class KannelMessageFilter(django_filters.FilterSet):
+    created = django_filters.DateTimeFilter()
+
+    class Meta:
+        model = KannelMessage
+        fields = ['sender', 'backend', 'created']
+        order_by = ['created']
+        object_name = 'filter'
