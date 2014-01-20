@@ -17,6 +17,7 @@
         <th>Sender</th>
         <th>Message</th>
         <th>Backend</th>
+        <th>Handled</th>
     </tr>
     {% for message in object_list %}
     <tr>
@@ -25,6 +26,7 @@
         <td class='phone_number'>{{ message.sender }}</td>
         <td class='message'>{{ message.message }}</td>
         <td class='backend'>{{ message.backend }}</td>
+        <td class='status'>{{ message.handled }}</td>
     </tr>
     {% endfor %}
 </table>

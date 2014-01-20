@@ -7,6 +7,7 @@ class KannelMessage(TimeStampedModel):
     backend = models.CharField(max_length=50)
     sender = models.CharField(max_length=16)
     message = models.CharField(max_length=1024)
+    handled = models.BooleanField()
 
     def __unicode__(self):
         return 'Message from %s on %s' % (

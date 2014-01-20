@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'pagination_bootstrap',
 
     'raven.contrib.django.raven_compat',
+    'south'
 )
 
 # A sample logging configuration. The only tangible logging

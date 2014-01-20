@@ -24,6 +24,17 @@ def store_in_db(backend, sender, message):
 
 
 @task
+def mark_handled(backend, sender, message):
+    with transaction.commit_on_success():
+        m = KannelMessage.objects.filter(
+            backend=backend,
+            sender=sender,
+            message=message
+        ).select_for_update().earliest()
+        m.handled = 1
+        m.save()
+
+@task
 def send_directly_to_router(backend, sender, message):
     payload = {
         'backend': backend,
@@ -35,6 +46,7 @@ def send_directly_to_router(backend, sender, message):
     logger.info("Calling url: %s with payload: %s" % (url, payload))
     response = s.get(url, params=payload)
     logger.debug(response.text)
+    mark_handled.delay(backend, sender, message)
 
 
 @transaction.atomic

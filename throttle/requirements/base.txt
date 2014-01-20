@@ -17,3 +17,4 @@ raven>=4.0.3
 django-crispy-forms>=1.4.0
 unipath>=1.0
 django-pagination-bootstrap>=1.0.5
+South>=0.8.4
