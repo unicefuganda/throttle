@@ -16,6 +16,10 @@ ALLOWED_HOSTS = ['*']
 
 ROUTER_URL = 'http://ureport.unicefuganda.org/router/receive/'
 ROUTER_PASSWORD = 'k1pr0t1ch'
+
+BROKER_URL = 'amqp://'
+CELERY_DEFAULT_QUEUE = 'throttle'
+
 #CELERYBEAT_SCHEDULE = {
 #    'add-every-second': {
 #        'task': 'throttle.tasks.send_to_router',
