@@ -5,6 +5,7 @@ from .models import KannelMessage
 from celery import task
 from celery.utils.log import get_task_logger
 from django.conf import settings
+from django.core.exceptions import DoesNotExist
 from django.db import transaction
 
 logger = get_task_logger(__name__)
@@ -27,13 +28,17 @@ def store_in_db(backend, sender, message):
 @task
 def mark_handled(backend, sender, message):
     with transaction.commit_on_success():
-        m = KannelMessage.objects.filter(
-            backend=backend,
-            sender=sender,
-            message=message
-        ).select_for_update().earliest()
-        m.handled = 1
-        m.save()
+        try:
+            m = KannelMessage.objects.filter(
+                backend=backend,
+                sender=sender,
+                message=message
+            ).select_for_update().earliest()
+            m.handled = 1
+            m.save()
+        except DoesNotExist:
+            pass
+
 
 @task
 def send_directly_to_router(backend, sender, message):
