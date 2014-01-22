@@ -53,7 +53,8 @@ def send_directly_to_router(backend, sender, message):
     logger.info("Calling url: %s with payload: %s" % (url, payload))
     response = s.get(url, params=payload)
     logger.debug(response.text)
-    mark_handled.delay(backend, sender, message)
+    if settings.STORE_KANNEL_MESSAGES_IN_DB:
+        mark_handled.delay(backend, sender, message)
 
 
 @transaction.atomic

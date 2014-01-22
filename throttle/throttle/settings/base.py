@@ -177,6 +177,7 @@ LOGGING = {
     }
 }
 
+STORE_KANNEL_MESSAGES_IN_DB = False
 BROKER_URL = 'django://'
 CELERY_TIMEZONE = 'Africa/Kampala'
 CELERY_ENABLE_UTC = True
